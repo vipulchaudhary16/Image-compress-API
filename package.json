@@ -10,12 +10,18 @@
   "license": "ISC",
   "dependencies": {
     "compress-images": "^2.0.5",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "ejs": "^3.1.8",
-    "express": "^4.18.1",
+    "express": "^4.18.2",
     "express-formidable": "^1.2.0",
+    "firebase": "^9.19.1",
     "fs": "0.0.1-security",
     "gifsicle": "^5.2.1",
     "http": "0.0.1-security",
-    "pngquant-bin": "^6.0.1"
+    "multer": "^1.4.5-lts.1",
+    "pngquant-bin": "^6.0.1",
+    "sharp": "^0.32.0",
+    "uuid": "^9.0.0"
   }
 }
