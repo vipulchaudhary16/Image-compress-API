@@ -6,7 +6,8 @@ function App() {
   const [downloadLink, setDownloadLink] = useState(null)
   const [welcomeMessage, setWelcomeMessage] = useState("")
   const [isCompressing, setIsCompressing] = useState(false)
-  const ALGORITHM_HOST = "http://localhost:8000"
+  // const ALGORITHM_HOST = "http://34.202.162.4:5001"
+  const ALGORITHM_HOST = "http://localhost:5001"
 
   const handleSubmit = (e) => {
     e.preventDefault()
