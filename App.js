@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 require("dotenv").config()
 const cors = require('cors')
-const PORT = 8001 
+const PORT = 5001 
 app.use(cors())
 app.use(express.json()) //to use body json
 
