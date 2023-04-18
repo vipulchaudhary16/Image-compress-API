@@ -9,22 +9,45 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  /* gap: 20px; */
 }
 
-.app {
-  background-color: #252d4a;
-  width: 450px;
-  min-height: 200px;
-  height: min-content;
-  border-radius: 15px;
-  padding: 20px;
-  box-shadow: 10px 10px 42px 0px rgba(0, 0, 0, 0.75);
-  justify-content: space-evenly;
-}
-
-.absolute-loader {
+/* .absolute-loader {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+} */
+
+.main{
+  width: 70vw;
+}
+
+.title{
+  width: 60%;
+  text-align: center;
+  background-color: white;
+  border-radius: 20px;
+  color: #7cc6fe;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.form-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.basic-btn{
+  border: 1px dashed;
+  border-radius: 10%;
+}
+
+.btn-box{
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  gap: 7px;
 }

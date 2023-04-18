@@ -21,7 +21,7 @@ initializeApp(firebaseConfig);
 const storage = getStorage();
 
 router.get("/", (req, res) => {
-    res.send("Ready to compress")
+    res.send("Ready to Compress")
 })
 
 const upload = multer({ storage: multer.memoryStorage() });
