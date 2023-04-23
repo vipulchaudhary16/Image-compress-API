@@ -20,7 +20,7 @@ initializeApp(firebaseConfig);
 const storage = getStorage();
 
 router.get("/", (req, res) => {
-    res.send("Ready to compress")
+    res.send("Ready to Compress")
 })
 
 const upload = multer({ storage: multer.memoryStorage() });
@@ -33,8 +33,9 @@ router.post("/compress", upload.single("file-to-compress"), async (req, res) => 
         console.log(`File size: ${req.file.size}`)
         console.log(`File type: ${req.file.mimetype}`)
         console.log(`File quality: ${quality}`)
+        let qq = quality > 50 ? 100 - quality +1: quality
         await sharp(image.buffer)
-            .jpeg({ quality: 100 - quality + 1 })
+            .jpeg({ quality: qq})
             .toBuffer()
             .catch((e) => {
                 console.log(e)
@@ -42,11 +43,13 @@ router.post("/compress", upload.single("file-to-compress"), async (req, res) => 
                 const storageRef = ref(storage, `files/${req.file.originalname}`);
                 const snapshot = await uploadBytesResumable(storageRef, response.buffer);
                 const downloadURL = await getDownloadURL(snapshot.ref);
+                console.log()
                 return res.send({
                     message: 'file uploaded to firebase storage',
                     name: req.file.originalname,
                     type: req.file.mimetype,
-                    downloadURL: downloadURL
+                    downloadURL: downloadURL,
+                    newSize : response.buffer.byteLength
                 })
             })
     } catch (error) {
