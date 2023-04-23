@@ -3,7 +3,6 @@ const { initializeApp } = require("firebase/app");
 const { getStorage, ref, getDownloadURL, uploadBytesResumable } = require("firebase/storage");
 const multer = require("multer");
 const router = express.Router();
-const { v4: uuid } = require('uuid');
 const sharp = require('sharp');
 require('dotenv').config()
 
@@ -28,9 +27,14 @@ const upload = multer({ storage: multer.memoryStorage() });
 router.post("/compress", upload.single("file-to-compress"), async (req, res) => {
     try {
         const image = req.file
-        const quality = req.body.quality || 50
+        console.log(req.body)
+        const quality = parseInt(req.body.quality )
+        console.log(`File name: ${req.file.originalname}`)
+        console.log(`File size: ${req.file.size}`)
+        console.log(`File type: ${req.file.mimetype}`)
+        console.log(`File quality: ${quality}`)
         await sharp(image.buffer)
-            .jpeg({ quality: quality })
+            .jpeg({ quality: 100 - quality + 1 })
             .toBuffer()
             .catch((e) => {
                 console.log(e)
@@ -50,13 +54,5 @@ router.post("/compress", upload.single("file-to-compress"), async (req, res) => 
         return res.status(400).send(error.message)
     }
 });
-
-const giveCurrentDateTime = () => {
-    const today = new Date();
-    const date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-    const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-    const dateTime = date + ' ' + time;
-    return dateTime;
-}
 
 module.exports = router;

@@ -1,5 +1,3 @@
-Project_Key.pem
-Compress_algo.pem
 project-machine-ubuntu.pem
 .env
 node_modules
